@@ -8,6 +8,7 @@ project(image_transport_tutorial)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  sensor_msgs
   cv_bridge
   image_transport
   roscpp
@@ -108,7 +109,7 @@ find_package(OpenCV REQUIRED )
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES image_transport_tutorial
-  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy std_msgs
+  CATKIN_DEPENDS sensor_msgs cv_bridge image_transport roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -142,6 +143,10 @@ include_directories(
  
  add_executable(my_publisher_20190527 src/my_publisher.cpp)
  target_link_libraries(my_publisher_20190527 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
+add_executable(my_converter_20190617 src/my_converter.cpp)
+ target_link_libraries(my_converter_20190617 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the

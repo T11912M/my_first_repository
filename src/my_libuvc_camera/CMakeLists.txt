@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(image_transport_tutorial)
+project(my_libuvc_camera)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -8,14 +8,12 @@ project(image_transport_tutorial)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  sensor_msgs
   cv_bridge
   image_transport
   roscpp
   rospy
   std_msgs
 )
-find_package(OpenCV REQUIRED )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -108,8 +106,8 @@ find_package(OpenCV REQUIRED )
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES image_transport_tutorial
-  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy std_msgs
+#  LIBRARIES my_libuvc_camera
+#  CATKIN_DEPENDS cv_bridge image_transport roscpp rospy std_msgs
 #  DEPENDS system_lib
 )
 
@@ -126,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/image_transport_tutorial.cpp
+#   src/${PROJECT_NAME}/my_libuvc_camera.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -137,16 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/image_transport_tutorial_node.cpp)
- add_executable(my_image_viewer_20190520 src/my_subscriber.cpp)
- target_link_libraries(my_image_viewer_20190520 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
- 
- add_executable(my_publisher_20190527 src/my_publisher.cpp)
- target_link_libraries(my_publisher_20190527 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
-add_executable(my_converter_20190617 src/my_converter.cpp)
- target_link_libraries(my_converter_20190617 ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
-
+# add_executable(${PROJECT_NAME}_node src/my_libuvc_camera_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -203,7 +192,7 @@ add_executable(my_converter_20190617 src/my_converter.cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_image_transport_tutorial.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_my_libuvc_camera.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
